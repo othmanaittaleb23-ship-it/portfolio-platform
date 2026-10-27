@@ -1,0 +1,34 @@
+<section class="skills-section">
+  <div class="skills-header">
+    <h2 class="section-title">Compétences Techniques</h2>
+    <p class="section-subtitle">
+      Aperçu des technologies, langages et outils de pointe que j'utilise au quotidien pour concevoir des architectures robustes et scalables.
+    </p>
+  </div>
+
+  <div class="skills-grid">
+    <div *ngFor="let category of skillCategories" class="card-3d-out skill-card">
+      <div class="card-header">
+        <div class="icon-box">
+          <!-- Icône dynamique selon le type -->
+          <svg *ngIf="category.iconSvgType === 'server'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="svg-neon"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+          <svg *ngIf="category.iconSvgType === 'code'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="svg-neon"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg *ngIf="category.iconSvgType === 'cpu'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="svg-neon"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+        </div>
+        <div>
+          <h3>{{ category.title }}</h3>
+          <span class="card-tag">{{ category.tag }}</span>
+        </div>
+      </div>
+      <ul class="skill-list">
+        <li *ngFor="let skill of category.skills">
+          <span class="skill-name">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="svg-bullet"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ skill.name }}
+          </span>
+          <span class="badge-3d">{{ skill.level }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

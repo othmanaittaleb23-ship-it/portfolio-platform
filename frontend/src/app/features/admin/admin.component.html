@@ -1,0 +1,66 @@
+<section class="admin-section" style="max-width: 1000px; margin: 50px auto; padding: 0 24px;">
+  
+  <!-- ÉCRAN DE CONNEXION -->
+  <div *ngIf="!authService.isAuthenticated()" class="card-3d-out" style="max-width: 450px; margin: 80px auto; padding: 40px; background: rgba(17, 22, 37, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); text-align: center;">
+    <h2 style="font-size: 2rem; margin-bottom: 10px;">Espace Admin</h2>
+    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px; font-weight: 300;">
+      Veuillez entrer le mot de passe administrateur.
+    </p>
+
+    <form (ngSubmit)="onLogin()" style="display: flex; flex-direction: column; gap: 20px;">
+      <input 
+        type="password" 
+        [(ngModel)]="passwordInput" 
+        name="password" 
+        placeholder="Mot de passe (ex: admin2026)" 
+        style="width: 100%; padding: 14px 18px; background: var(--bg-app); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; color: var(--text-primary); font-size: 0.95px; box-shadow: var(--shadow-3d-in); outline: none;"
+        required
+      />
+      <span *ngIf="loginError" style="color: #ff5252; font-size: 0.85rem;">Mot de passe incorrect.</span>
+      
+      <button type="submit" class="btn-3d btn-primary" style="width: 100%; justify-content: center;">
+        Se connecter
+      </button>
+    </form>
+  </div>
+
+  <!-- TABLEAU DE BORD ADMIN (Si connecté) -->
+  <div *ngIf="authService.isAuthenticated()">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+      <div>
+        <h2 style="font-size: 2.5rem; font-weight: 700;">Tableau de Bord Admin</h2>
+        <p style="color: var(--text-secondary); font-weight: 300;">Gestion centralisée du contenu du portfolio.</p>
+      </div>
+      <button (click)="onLogout()" class="btn-3d btn-outline" style="border-color: #ff5252; color: #ff5252;">
+        Déconnexion
+      </button>
+    </div>
+
+    <!-- Statistiques rapides -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px;">
+      <div class="card-3d-out" style="padding: 24px; background: rgba(17, 22, 37, 0.75);">
+        <span style="color: var(--text-secondary); font-size: 0.85rem;">Projets gérés</span>
+        <h3 style="font-size: 2rem; color: var(--primary-neon); margin-top: 5px;">{{ projects.length }}</h3>
+      </div>
+      <div class="card-3d-out" style="padding: 24px; background: rgba(17, 22, 37, 0.75);">
+        <span style="color: var(--text-secondary); font-size: 0.85rem;">Statut du Serveur</span>
+        <h3 style="font-size: 1.5rem; color: #4caf50; margin-top: 5px;">🟢 En Ligne (Docker)</h3>
+      </div>
+    </div>
+
+    <!-- Liste des projets modifiables -->
+    <div class="card-3d-out" style="padding: 30px; background: rgba(17, 22, 37, 0.75);">
+      <h3 style="font-size: 1.25rem; margin-bottom: 20px;">Gestion des Projets</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div *ngFor="let p of projects" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--bg-app); border-radius: 10px; border: 1px solid rgba(255,255,255,0.03);">
+          <div>
+            <strong style="color: var(--text-primary);">{{ p.title }}</strong>
+            <span style="display: block; font-size: 0.8rem; color: var(--text-secondary);">{{ p.category }}</span>
+          </div>
+          <span class="badge-3d">Actif</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

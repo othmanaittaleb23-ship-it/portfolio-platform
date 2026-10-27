@@ -1,0 +1,43 @@
+<section class="experience-section" style="max-width: 1200px; margin: 50px auto; padding: 0 24px;">
+  
+  <!-- Titre Expériences -->
+  <div style="text-align: center; margin-bottom: 50px;">
+    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 12px;">Parcours Professionnel</h2>
+    <p style="color: var(--text-secondary); font-weight: 300;">Mes expériences clés en entreprise et stages d'ingénierie.</p>
+  </div>
+
+  <!-- Grille / Timeline des Expériences -->
+  <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 60px;">
+    <div *ngFor="let exp of experiences" class="card-3d-out" style="padding: 30px; background: rgba(17, 22, 37, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+        <div>
+          <span style="font-size: 0.8rem; color: var(--primary-neon); font-weight: 600; text-transform: uppercase;">{{ exp.period }}</span>
+          <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 4px;">{{ exp.role }}</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 500;">{{ exp.company }} • <span style="font-weight: 300; font-size: 0.85rem;">{{ exp.location }}</span></p>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; font-weight: 300;">
+        {{ exp.description }}
+      </p>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <span *ngFor="let tech of exp.technologies" class="badge-3d">{{ tech }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Titre Certifications -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 10px;">Certifications Officielles</h2>
+    <p style="color: var(--text-secondary); font-weight: 300;">Formations certifiantes continues (IBM, Google, Meta, Packt).</p>
+  </div>
+
+  <!-- Grille Certifications -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+    <div *ngFor="let cert of certifications" class="card-3d-out" style="padding: 24px; background: rgba(17, 22, 37, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06);">
+      <span style="font-size: 0.75rem; color: var(--primary-neon); text-transform: uppercase; font-weight: 600;">{{ cert.category }}</span>
+      <h4 style="font-size: 1.05rem; color: var(--text-primary); margin: 8px 0 6px 0;">{{ cert.title }}</h4>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; font-weight: 300;">{{ cert.issuer }} • {{ cert.date }}</p>
+    </div>
+  </div>
+
+</section>

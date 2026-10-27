@@ -1,0 +1,79 @@
+<section style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">Blog & Articles</h2>
+    <p style="color: var(--text-secondary); font-weight: 300;">
+      Partage d'expériences techniques, architectures microservices et développement moderne.
+    </p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 30px;">
+    <article *ngFor="let post of posts()" class="card-3d-out" style="padding: 30px; background: rgba(17, 22, 37, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+      
+      <!-- En-tête de l'article -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <span class="badge-3d" style="color: var(--primary-neon);">{{ post.category }}</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">{{ post.date }} • {{ post.readTime }}</span>
+      </div>
+
+      <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; color: var(--text-primary);">
+        {{ post.title }}
+      </h3>
+
+      <p style="color: var(--text-secondary); line-height: 1.6; font-weight: 300; margin-bottom: 20px;">
+        {{ post.summary }}
+      </p>
+
+      <!-- Zone d'interactions (Likes & Total commentaires) -->
+      <div style="display: flex; align-items: center; gap: 20px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <button (click)="onLike(post.id)" class="btn-3d btn-outline" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; font-size: 0.9rem;">
+          <span>{{ post.isLiked ? '❤️' : '🤍' }}</span>
+          <span>{{ post.likes }} Likes</span>
+        </button>
+
+        <span style="color: var(--text-secondary); font-size: 0.9rem;">
+          💬 {{ post.comments.length }} Commentaires
+        </span>
+      </div>
+
+      <!-- Section Commentaires -->
+      <div style="margin-top: 25px; padding-top: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
+        <h4 style="font-size: 1rem; margin-bottom: 15px; color: var(--text-primary);">Commentaires</h4>
+
+        <div *ngIf="post.comments.length === 0" style="color: var(--text-secondary); font-size: 0.85rem; font-style: italic; margin-bottom: 15px;">
+          Soyez le premier à laisser un commentaire.
+        </div>
+
+        <div *ngFor="let comment of post.comments" style="margin-bottom: 12px; padding: 10px; background: var(--bg-app); border-radius: 8px; border: 1px solid rgba(255,255,255,0.03);">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+            <strong style="color: var(--primary-neon);">{{ comment.author }}</strong>
+            <span style="color: var(--text-secondary);">{{ comment.date }}</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-primary); margin: 0;">{{ comment.content }}</p>
+        </div>
+
+        <!-- Formulaire d'ajout de commentaire -->
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+          <input 
+            type="text" 
+            [(ngModel)]="newAuthor[post.id]" 
+            placeholder="Votre nom (facultatif)" 
+            style="padding: 8px 12px; background: var(--bg-app); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-primary); font-size: 0.85rem; outline: none;">
+          
+          <div style="display: flex; gap: 10px;">
+            <input 
+              type="text" 
+              [(ngModel)]="newCommentContent[post.id]" 
+              placeholder="Ajouter un commentaire..." 
+              style="flex: 1; padding: 8px 12px; background: var(--bg-app); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-primary); font-size: 0.85rem; outline: none;">
+            
+            <button (click)="onAddComment(post.id)" class="btn-3d btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">
+              Publier
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </article>
+  </div>
+</section>

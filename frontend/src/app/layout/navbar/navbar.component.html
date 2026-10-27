@@ -1,0 +1,25 @@
+<nav class="navbar-wrapper">
+  <div class="navbar-container panel-glass">
+    <!-- Logo -->
+    <a routerLink="/" class="navbar-brand">
+      <span class="text-neon">O</span>thmane <span class="text-neon">A</span>ït <span class="text-neon">T</span>aleb
+    </a>
+
+    <!-- Links -->
+    <div class="navbar-links" [class.active]="isMobileMenuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+      <a routerLink="/profile" routerLinkActive="active">Profil</a>
+      <a routerLink="/skills" routerLinkActive="active">Compétences</a>
+      <a routerLink="/projects" routerLinkActive="active">Projets</a>
+      <a routerLink="/blog" routerLinkActive="active">Blog</a>
+      <a routerLink="/contact" routerLinkActive="active" class="btn-contact-nav">Contact</a>
+    </div>
+
+    <!-- Burger -->
+    <button class="burger-btn" (click)="toggleMobileMenu()">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </div>
+</nav>

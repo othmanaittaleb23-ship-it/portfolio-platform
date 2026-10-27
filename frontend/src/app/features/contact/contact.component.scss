@@ -1,0 +1,110 @@
+.contact-section {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 24px;
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+  }
+
+  .alert-success-3d {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid var(--primary-neon);
+    border-radius: 12px;
+    color: var(--primary-neon);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+  }
+
+  .contact-form {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: rgba(17, 22, 37, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .input-3d {
+        width: 100%;
+        padding: 14px 18px;
+        background: var(--bg-app);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        font-size: 0.95rem;
+        box-shadow: var(--shadow-3d-in);
+        outline: none;
+        transition: var(--tr-smooth);
+
+        &::placeholder {
+          color: var(--text-muted);
+        }
+
+        &:focus {
+          border-color: var(--primary-neon);
+          box-shadow: var(--shadow-3d-in), 0 0 8px rgba(0, 242, 254, 0.3);
+        }
+      }
+
+      .textarea-3d {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .error-msg {
+        color: #ff5252;
+        font-size: 0.82rem;
+        margin-top: 2px;
+      }
+    }
+
+    .btn-submit {
+      align-self: flex-start;
+      margin-top: 10px;
+    }
+  }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .contact-section {
+    margin: 20px auto;
+
+    .contact-form {
+      padding: 24px;
+    }
+  }
+}

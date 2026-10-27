@@ -1,0 +1,39 @@
+<ng-container [ngSwitch]="name.toLowerCase()">
+
+  <!-- ANGULAR -->
+  <svg *ngSwitchCase="'angular'" [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2L2 6.5l1.5 12L12 22l8.5-3.5L22 6.5L12 2z"/>
+    <path d="M12 4.5l6 12h-2.5l-1.2-2.8H9.7L8.5 16.5H6l6-12z"/>
+    <path d="M10.5 11.5h3L12 7.8l-1.5 3.7z"/>
+  </svg>
+
+  <!-- SPRING BOOT / JAVA -->
+  <svg *ngSwitchCase="'springboot'" [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+  </svg>
+
+  <!-- DOCKER -->
+  <svg *ngSwitchCase="'docker'" [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.983 11.078h2.119v-2.13h-2.119zm-2.755 0h2.118v-2.13h-2.118zm-2.756 0h2.119v-2.13H8.472zm-2.756 0h2.119v-2.13H5.716zm5.512-2.756h2.118V6.192h-2.118zm-2.756 0h2.119V6.192H8.472zm-2.756 0h2.119V6.192H5.716zm2.756-2.756h2.119V3.436H8.472zm12.981 6.559c-.312-.222-1.282-.821-2.614-.821-.692 0-1.402.164-2.073.468a.333.333 0 01-.15.038.334.334 0 01-.321-.247c-.201-.733-.679-1.378-1.332-1.802-.871-.566-1.921-.73-2.923-.46a.33.33 0 00-.236.236c-.267 1.002-.103 2.052.463 2.923.424.653 1.069 1.131 1.802 1.332.083.023.17.023.247 0a.334.334 0 00.209-.188c.304-.671.468-1.381.468-2.073 0-.323-.036-.645-.107-.961.545-.192 1.117-.289 1.696-.289 1.037 0 1.848.423 2.112.593l.035.023a8.91 8.91 0 01-1.353 3.493c-.902 1.402-2.226 2.457-3.728 2.971a10.082 10.082 0 01-3.284.551c-2.088 0-4.041-.663-5.648-1.918-.124-.097-.282-.128-.431-.082s-.266.155-.316.297l-.234.667c-.066.188.002.396.162.51 1.954 1.393 4.254 2.13 6.603 2.13 1.258 0 2.508-.212 3.715-.63 1.826-.626 3.435-1.908 4.531-3.612a10.89 10.89 0 001.651-4.256c.036-.184-.083-.356-.267-.384z"/>
+  </svg>
+
+  <!-- PYTHON -->
+  <svg *ngSwitchCase="'python'" [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M11.927 0C5.88 0 6.25 2.62 6.25 2.62L6.26 5.33H12V6.1H3.68S0 5.68 0 11.75c0 6.07 3.23 5.86 3.23 5.86h1.92v-2.68s-.1-3.23 3.23-3.23h5.45s3.08.05 3.08-2.98V3.18S17.43 0 11.927 0zm-2.58 1.83a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92zm2.73 22.17c6.04 0 5.67-2.62 5.67-2.62l-.01-2.71H12v-.77h8.32s3.68.42 3.68-5.65c0-6.07-3.23-5.86-3.23-5.86h-1.92v2.68s.1 3.23-3.23 3.23h-5.45s-3.08-.05-3.08 2.98v5.52s-.52 3.18 4.98 3.18zm2.58-1.83a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92z"/>
+  </svg>
+
+  <!-- REACT -->
+  <svg *ngSwitchCase="'react'" [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="2"/>
+    <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
+    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/>
+    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/>
+  </svg>
+
+  <!-- GITHUB / GIT -->
+  <svg *ngSwitchDefault [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+    <path d="M9 18c-4.51 2-5-2-7-2"/>
+  </svg>
+
+</ng-container>

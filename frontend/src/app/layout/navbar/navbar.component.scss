@@ -1,0 +1,101 @@
+.navbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 16px 20px;
+  
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(17, 22, 37, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    
+    .text-neon {
+      color: var(--primary-neon);
+      text-shadow: 0 0 10px var(--primary-neon);
+    }
+  }
+
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 24px; // Espace bien distinct entre chaque lien
+
+    a:not(.btn-3d) {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      padding: 4px 0;
+      text-decoration: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; width: 0; height: 2px;
+        background: var(--primary-neon);
+        box-shadow: 0 0 10px var(--primary-neon);
+        transition: var(--tr-smooth);
+      }
+
+      &:hover, &.active {
+        color: var(--text-primary);
+        &::after { width: 100%; }
+      }
+    }
+  }
+
+  .burger-btn {
+    display: none;
+    background: transparent; 
+    border: none; 
+    cursor: pointer;
+    flex-direction: column; 
+    gap: 5px;
+    
+    .burger-line {
+      width: 22px; height: 2px; background: var(--text-primary);
+    }
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar-wrapper {
+    padding: 10px 10px;
+    
+    .burger-btn { display: flex; }
+    
+    .navbar-links {
+      display: none;
+      position: absolute; 
+      top: 100%; 
+      left: 10px; 
+      right: 10px;
+      margin-top: 10px;
+      background: var(--bg-panel);
+      border-radius: 16px;
+      flex-direction: column; 
+      padding: 20px; 
+      gap: 15px;
+      box-shadow: var(--shadow-3d-out);
+      
+      &.active { display: flex; }
+    }
+  }
+}

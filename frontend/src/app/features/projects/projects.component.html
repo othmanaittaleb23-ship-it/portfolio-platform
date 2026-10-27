@@ -1,0 +1,49 @@
+<div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+  
+  <div *ngFor="let project of projects" class="card-3d-out" style="padding: 24px; background: rgba(17, 22, 37, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+    
+    <!-- LECTEUR YOUTUBE OU PLACEHOLDER -->
+    <div style="position: relative; width: 100%; height: 200px; border-radius: 12px; overflow: hidden; margin-bottom: 20px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05);">
+      
+      <!-- Si l'ID YouTube existe -->
+      <iframe 
+        *ngIf="project.youtubeVideoId"
+        [src]="getSafeYoutubeUrl(project.youtubeVideoId)" 
+        style="width: 100%; height: 100%; border: none;" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+
+      <!-- Si la vidéo n'est PAS encore uploadée (Placeholder) -->
+      <div *ngIf="!project.youtubeVideoId" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="1.5" style="margin-bottom: 10px; filter: drop-shadow(0 0 8px var(--primary-neon));">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="var(--primary-neon)"/>
+        </svg>
+        <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300;">Démo vidéo bientôt disponible sur YouTube</span>
+      </div>
+
+    </div>
+
+    <!-- En-tête du projet -->
+    <span class="badge-3d" style="margin-bottom: 10px; display: inline-block;">{{ project.category }}</span>
+    <h3 style="font-size: 1.3rem; margin-bottom: 10px;">{{ project.title }}</h3>
+    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; font-weight: 300;">{{ project.description }}</p>
+
+    <!-- Technologies utilisées -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+      <span *ngFor="let tech of project.technologies" style="padding: 4px 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; font-size: 0.8rem; color: var(--text-primary);">
+        {{ tech }}
+      </span>
+    </div>
+
+    <!-- Liens -->
+    <div style="display: flex; gap: 15px;">
+      <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" class="btn-3d btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">
+        Code Source
+      </a>
+    </div>
+
+  </div>
+
+</div>

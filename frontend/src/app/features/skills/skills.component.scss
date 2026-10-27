@@ -1,0 +1,109 @@
+.skills-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 24px;
+
+  .skills-header {
+    text-align: center;
+    margin-bottom: 50px;
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+  }
+
+  .skill-card {
+    padding: 30px;
+    background: rgba(17, 22, 37, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 25px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+      .icon-box {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg-app);
+        border-radius: 14px;
+        box-shadow: var(--shadow-3d-in);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+
+        .svg-neon {
+          stroke: var(--primary-neon);
+          filter: drop-shadow(0 0 6px var(--primary-neon));
+        }
+      }
+
+      h3 {
+        font-size: 1.15rem;
+        margin: 0 0 2px 0;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .card-tag {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .skill-name {
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .svg-bullet {
+            stroke: var(--primary-neon);
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+  }
+}

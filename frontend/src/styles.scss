@@ -1,0 +1,170 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* ==========================================================================
+   DESIGN SYSTEM : MODERNE & 3D (Neumorphism / Glassmorphism)
+   ========================================================================== */
+
+:root {
+  /* --- Palette de Couleurs (Dark/Neon) --- */
+  --bg-app: #0a0e17;           // Fond très sombre
+  --bg-panel: #111625;         // Fond des composants 3D
+  
+  --primary-neon: #00f2fe;     // Cyan vibrant
+  --primary-dim: rgba(0, 242, 254, 0.1);
+  --secondary-neon: #4facfe;   // Bleu moderne
+  --accent-neon: #bd00ff;      // Violet néon
+  
+  --text-primary: #ffffff;
+  --text-secondary: #b0b8c4;
+  --text-muted: #6c757d;
+  
+  /* --- Typographie --- */
+  --font-main: 'Poppins', sans-serif;
+  
+  /* --- Effets 3D : Neumorphism (Relief) --- */
+  // Ombre portée externe (élément qui sort)
+  --shadow-3d-out: 
+    6px 6px 12px #05070b, 
+    -6px -6px 12px #0f1523;
+  
+  // Ombre portée interne (élément pressé/enfoncé)
+  --shadow-3d-in: 
+    inset 6px 6px 12px #05070b, 
+    inset -6px -6px 12px #0f1523;
+
+  /* --- Effets 3D : Glassmorphism (Translucide) --- */
+  --glass-bg: rgba(17, 22, 37, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(12px);
+  
+  /* --- Transitions --- */
+  --tr-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   RESET & STYLES DE BASE
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-shadow: border-box;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--tr-smooth);
+}
+
+/* ==========================================================================
+   COMPOSANTS UTILITAIRES 3D (Classes réutilisables)
+   ========================================================================== */
+
+// 1. La Carte Neumorphique (Effet d'extrusion 3D)
+.card-3d-out {
+  background: var(--bg-panel);
+  border-radius: 16px;
+  box-shadow: var(--shadow-3d-out);
+  padding: 24px;
+  transition: var(--tr-smooth);
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-5px); // Légère élévation au survol
+    border-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+// 2. Le Panneau Glassmorphism (Floating)
+.panel-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+// 3. Les Boutons 3D Néon
+.btn-3d {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 50px; // Arrondi complet moderne
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--tr-smooth);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  
+  // Variantes
+  &.btn-primary {
+    background: var(--bg-panel);
+    color: var(--primary-neon);
+    box-shadow: var(--shadow-3d-out);
+
+    &:hover {
+      box-shadow: var(--shadow-3d-in); // Effet pressé au survol
+      color: var(--text-primary);
+    }
+    
+    // Effet de lueur (Glow)
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--primary-neon);
+      opacity: 0;
+      filter: blur(20px);
+      transition: var(--tr-smooth);
+      z-index: -1;
+    }
+    
+    &:hover::after {
+      opacity: 0.2;
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-neon);
+    color: var(--primary-neon);
+    
+    &:hover {
+      background: var(--primary-neon);
+      color: var(--bg-app);
+      box-shadow: 0 0 15px var(--primary-neon); // Glow externe
+    }
+  }
+}
+
+// 4. Badges Techniques 3D
+.badge-3d {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--bg-app);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--secondary-neon);
+  box-shadow: var(--shadow-3d-in); // Effet incrusté
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
